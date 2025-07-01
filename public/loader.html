@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loading Tool...</title>
+  <style>
+    body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; }
+    iframe { width: 100%; height: 100%; border: none; }
+  </style>
+</head>
+<body>
+  <iframe id="frontend-app-frame" src="https://mam-lit-kabd.vercel.app/"></iframe>
+
+  <script>
+    // The server will replace this placeholder with the real LTIK token
+    const LTIK_TOKEN = '__LTIK_TOKEN_PLACEHOLDER__';
+    const frontendFrame = document.getElementById('frontend-app-frame');
+
+    // 1. Listen for the "I'm ready" message from the iframe
+    window.addEventListener('message', (event) => {
+      // Check that the message is from our iframe and is the one we expect
+      if (event.source === frontendFrame.contentWindow && event.data === 'lti.storageReady') {
+        
+        console.log('Loader Page: Received "lti.storageReady" from iframe. Sending token...');
+
+        // 2. The iframe is ready, so send it the token
+        const messagePayload = {
+          subject: 'lti.sendToken',
+          ltik: LTIK_TOKEN
+        };
+
+        // The second argument is the target origin. '*' is less secure but fine for testing.
+        // For production, you should use 'https://mam-lit-kabd.vercel.app'
+        frontendFrame.contentWindow.postMessage(messagePayload, '*');
+      }
+    });
+  </script>
+</body>
+</html>

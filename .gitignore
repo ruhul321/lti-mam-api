@@ -1,0 +1,21 @@
+# Node modules
+node_modules/
+
+# Logs
+logs
+*.log
+
+# dotenv files
+.env
+
+# Docker
+*.pid
+Dockerfile
+docker-compose.yml
+
+# VSCode
+.vscode/
+
+# OS-specific
+.DS_Store
+Thumbs.db

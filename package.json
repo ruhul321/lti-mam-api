@@ -1,0 +1,23 @@
+{
+  "name": "lti-tool-backend",
+  "version": "1.0.0",
+  "description": "backend for MAM API integration with BrightSpace",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --env-file=.env server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ruhul",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.0",
+    "express": "^4.21.2",
+    "ltijs": "^5.9.7",
+    "mongoose": "^8.15.2",
+    "node-cache": "^5.1.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
