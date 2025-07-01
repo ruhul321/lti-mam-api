@@ -8,11 +8,6 @@ logs
 # dotenv files
 .env
 
-# Docker
-*.pid
-Dockerfile
-docker-compose.yml
-
 # VSCode
 .vscode/
 
