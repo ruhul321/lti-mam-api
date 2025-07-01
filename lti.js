@@ -114,7 +114,12 @@ LTI.onDeepLinking(async (token, req, res) => {
 // Start the LTI tool
 const start = async () => {
 
-  await LTI.deploy({ port: process.env.PORT || 3000 });
+  await LTI.deploy({
+    port: process.env.PORT || 3000,
+    server: {
+      listen: { host: '0.0.0.0' }
+    }
+  });
 
   await LTI.registerPlatform({
     url: process.env.PLATFORM_URL,
