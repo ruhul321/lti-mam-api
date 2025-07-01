@@ -102,13 +102,14 @@ LTI.onDeepLinking(async (token, req, res) => {
   
     LTI.app.get('/test', (req, res) => {
       res.send('✅ Test route working without LTI session');
-    });
-    // 🔁 Health route for cloud deployment
-    LTI.whitelist('/health');
-    LTI.app.get('/health', (req, res) => {
-      res.status(200).json({ status: 'ok', uptime: process.uptime() });
-    });
+    });   
   }
+
+  //🔁 Health route for cloud deployment
+  LTI.whitelist('/health');
+  LTI.app.get('/health', (req, res) => {
+    res.status(200).json({ status: 'ok', uptime: process.uptime() });
+  });
   
 // Start the LTI tool
 const start = async () => {
